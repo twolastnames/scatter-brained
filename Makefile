@@ -4,7 +4,6 @@ FRONT_SRC=front/src
 FRONT_MODULES=front/node_modules
 BACK_MODULES=node_modules
 
-
 $(FRONT_MODULES):
 	cd $(FRONT) && npm ci
 
@@ -14,8 +13,8 @@ $(BACK_MODULES):
 static: dist
 	cd dist && python3 -m http.server 8000
 
-format:
-	cd $(FRONT) && npm run lint
+format: $(FRONT_MODULES)
+	cd $(FRONT) && npm run lint && npm run prettify
 
 update:
 	cd $(FRONT) && npm install
@@ -33,4 +32,4 @@ dev: $(FRONT_MODULES) $(shell find $(FRONT_SRC) -type f)
 build: $(BACK_MODULES) dist
 
 clean:
-	rm -rf dist $(FRONT_MODULES)
+	rm -rf dist $(FRONT_MODULES) $(BACK_MODULES)

@@ -1,12 +1,11 @@
-import './App.css'
-import { StateDumper } from './estimation/StateDumper'
-
+import { StateDumper } from "./estimation/StateDumper";
 
 function App() {
-  return (<>
-    <StateDumper />
-  </>
-  )
+  return (
+    <>
+      <StateDumper />
+    </>
+  );
 }
 
-export default App
+export default App;
