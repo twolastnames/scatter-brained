@@ -1,0 +1,24 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Backend to agile estimation cards",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twolastnames/scatter-brained.git"
+  },
+  "author": "Alan Glenn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twolastnames/scatter-brained/issues"
+  },
+  "homepage": "https://github.com/twolastnames/scatter-brained#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "fast-json-patch": "^3.1.1",
+    "ws": "^8.18.2"
+  }
+}
