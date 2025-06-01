@@ -20,6 +20,9 @@ update:
 	cd $(FRONT) && npm install
 	npm install
 
+test:
+	cd $(FRONT) && npm run test
+
 run: build
 	node index.js
 
