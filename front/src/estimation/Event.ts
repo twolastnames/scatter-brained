@@ -49,9 +49,8 @@ export const stateInitialization = new Promise((resolve) => {
   });
 });
 
-socket.onmessage = (event) => {
-  const patch = JSON.parse(event.data)?.["$patch"];
-
+function patchEstimationState(data: string) {
+  const patch = JSON.parse(data)?.["$patch"];
   if (patch) {
     const previous = JSON.parse(JSON.stringify(currentState));
     try {
@@ -67,6 +66,10 @@ socket.onmessage = (event) => {
   if (JSON.stringify(currentState) === "{}") {
     changeEstimationState((current) => ({ dipslayed: true, ...current }));
   }
+}
+
+socket.onmessage = (event) => {
+  patchEstimationState(event.data);
 };
 
 export async function changeEstimationState(getChange: Changer) {

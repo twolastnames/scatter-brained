@@ -1,9 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`can alter application state 1`] = `
+exports[`can be initialized 1`] = `
 <div
   data-testid="ScatterBrained"
 >
-  <span />
+  <span>
+    {
+  "displayed": false,
+  "participants": {}
+}
+  </span>
 </div>
 `;
