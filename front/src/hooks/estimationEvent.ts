@@ -1,6 +1,24 @@
 import { applyPatch, compare } from "fast-json-patch";
-import { initialEstimationState, type EstimationState } from "./State";
 import { useEffect, useState } from "react";
+
+export type Participant = {
+  selected?: number;
+  lastHeartbeat: number;
+  lurker: boolean;
+  name: string;
+};
+
+export type EstimationState = {
+  displayed?: boolean;
+  participants?: {
+    [id: string]: Participant;
+  };
+};
+
+export const initialEstimationState: EstimationState = {
+  displayed: false,
+  participants: {},
+};
 
 export type InterestGrabber<TYPE> = (
   current: EstimationState,

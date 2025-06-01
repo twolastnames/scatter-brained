@@ -1,4 +1,4 @@
-import { StateDumper } from "./estimation/StateDumper";
+import { StateDumper } from "./components/StateDumper/Component";
 
 function App() {
   return (

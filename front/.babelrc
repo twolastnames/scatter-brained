@@ -4,5 +4,5 @@
     ["@babel/preset-react", { "runtime": "automatic" }],
     "@babel/preset-typescript"
   ],
-  "plugins": ["babel-plugin-rewire"]
+  "plugins": ["babel-plugin-rewire", "babel-plugin-transform-scss"]
 }

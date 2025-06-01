@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { act } from "@testing-library/react";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const estimationEvent = require("../estimation/Event");
+const estimationEvent = require("../hooks/estimationEvent");
 
 const createEstimationEvent = estimationEvent.__get__("patchEstimationState");
 
