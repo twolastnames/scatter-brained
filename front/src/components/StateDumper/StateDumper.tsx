@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { useEstimationEvent } from "../../hooks/estimationEvent";
-import styles from "./Styles.module.scss";
+import styles from "./StateDumper.module.scss";
 
 export function StateDumper(): ReactNode {
   const state = useEstimationEvent((current) => current || {}, {});
