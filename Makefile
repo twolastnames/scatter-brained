@@ -20,6 +20,9 @@ update:
 	cd $(FRONT) && npm install
 	npm install
 
+component:
+	cd $(FRONT)/src/components && node template.js $(NAME)
+
 test:
 	cd $(FRONT) && npm run test
 
