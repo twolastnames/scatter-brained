@@ -1,0 +1,15 @@
+.cardset {
+}
+
+.nullCard:hover {
+  border-width: 1px;
+  border-color: var(--secondary-accent);
+  border-style: solid;
+  transition:
+    border-width 0.25s,
+    transform 0.25s;
+}
+
+.nullCard {
+  border-style: none;
+}
