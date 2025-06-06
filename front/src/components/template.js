@@ -45,7 +45,7 @@ writeComponent(({ path, name, slug }) => ({
 
 writeComponent(({ path, name, typesName }) => ({
   data: `
-export type ${typesName} = {
+export interface ${typesName} {
 }
 `,
   directory: path,
