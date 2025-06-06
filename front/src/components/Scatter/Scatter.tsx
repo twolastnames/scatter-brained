@@ -9,12 +9,20 @@ import { type ScatterType } from "./ScatterType";
 interface InnerCircleTypes extends PropsWithChildren {
   radius: number;
   style: CSSProperties;
+  className?: string;
+  angle: number;
 }
 
-const InnerCircle = ({ radius, style, children }: InnerCircleTypes) => {
+const InnerCircle = ({
+  radius,
+  style,
+  className,
+  children,
+  angle,
+}: InnerCircleTypes) => {
   return (
     <div
-      className={styles.inner}
+      className={`${angle !== 0 ? styles.pointable : ""} ${styles.inner} ${className || styles.innerStyle}`}
       style={{
         height: `${radius * 2}px`,
         width: `${radius * 2}px`,
@@ -34,9 +42,9 @@ export function Scatter(props: ScatterType): ReactNode {
   const innerRadius =
     (fullRadius * Math.sin(angle / 2)) / (1 + Math.sin(angle / 2));
   const innerCircles = props.selections.map(
-    (child: ReactNode, index: number) => {
+    ({ selection, className }, index: number) => {
       const effectiveAngle =
-        angle * ((index + props.selected) % props.selections.length);
+        angle * ((index - props.selected) % props.selections.length);
       const top =
         fullRadius -
         fullRadius * Math.cos(effectiveAngle) -
@@ -49,13 +57,16 @@ export function Scatter(props: ScatterType): ReactNode {
         innerRadius * Math.sin(effectiveAngle);
       return (
         <InnerCircle
+          className={className}
+          angle={effectiveAngle}
           radius={innerRadius}
           style={{
             top: `${top}px`,
             left: `${left}px`,
+            transform: `rotate(${effectiveAngle}rad)`,
           }}
         >
-          {child}
+          {selection}
         </InnerCircle>
       );
     },
@@ -71,6 +82,7 @@ export function Scatter(props: ScatterType): ReactNode {
         position: "relative",
       }}
     >
+      <div className={styles.middle}>{props.children}</div>
       {innerCircles}
     </div>
   );

@@ -1,16 +1,41 @@
 .scatter {
   border-width: 2px;
-  border-color: --var(--primary-accent);
+  border-color: var(--primary-accent);
   border-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.innerStyle:hover {
+  border-color: var(--secondary-accent);
+  transition:
+    border-width 0.25s,
+    transform 0.25s;
+}
+
+.innerStyle {
+  border-width: 1px;
+  border-color: var(--secondary-regular);
+  border-style: solid;
+  background-color: var(--secondary-trivial);
+  cursor: default;
+}
+
+.pointable {
+  cursor: pointer;
 }
 
 .inner {
-  border-width: 1px;
-  border-color: --var(--primary-accent);
-  border-style: solid;
   position: absolute;
   transition:
     top 0.25s,
     left 0.25s,
     transform 0.25s;
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
