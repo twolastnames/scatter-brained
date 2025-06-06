@@ -10,4 +10,5 @@ export interface ScatterType extends PropsWithChildren {
   size: number;
   selections: Array<Selection>;
   selected: number;
+  mapRotation: (angle: number) => number;
 }

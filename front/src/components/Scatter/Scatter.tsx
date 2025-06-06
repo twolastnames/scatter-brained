@@ -66,7 +66,7 @@ export function Scatter(props: ScatterType): ReactNode {
           style={{
             top: `${top}px`,
             left: `${left}px`,
-            transform: `rotate(${effectiveAngle}rad)`,
+            transform: `rotate(${props.mapRotation(effectiveAngle)}rad)`,
           }}
         >
           {selection}
