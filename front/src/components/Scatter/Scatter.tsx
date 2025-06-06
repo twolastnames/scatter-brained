@@ -11,6 +11,7 @@ interface InnerCircleTypes extends PropsWithChildren {
   style: CSSProperties;
   className?: string;
   angle: number;
+  readOnly: boolean;
 }
 
 const InnerCircle = ({
@@ -19,10 +20,11 @@ const InnerCircle = ({
   className,
   children,
   angle,
+  readOnly,
 }: InnerCircleTypes) => {
   return (
     <div
-      className={`${angle !== 0 ? styles.pointable : ""} ${styles.inner} ${className || styles.innerStyle}`}
+      className={`${!readOnly && angle !== 0 ? styles.pointable : ""} ${styles.inner} ${className || styles.innerStyle}`}
       style={{
         height: `${radius * 2}px`,
         width: `${radius * 2}px`,
@@ -57,6 +59,7 @@ export function Scatter(props: ScatterType): ReactNode {
         innerRadius * Math.sin(effectiveAngle);
       return (
         <InnerCircle
+          readOnly={props.readOnly}
           className={className}
           angle={effectiveAngle}
           radius={innerRadius}

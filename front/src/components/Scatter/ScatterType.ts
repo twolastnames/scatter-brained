@@ -6,6 +6,7 @@ export type Selection = {
 };
 
 export interface ScatterType extends PropsWithChildren {
+  readOnly: boolean;
   size: number;
   selections: Array<Selection>;
   selected: number;
