@@ -1,1 +1,1 @@
-export const cardMap = ["1/2", "1", "2", "3", "5", "8"];
+export const cardMap = ["1/2", "1", "2", "3", "5"];
