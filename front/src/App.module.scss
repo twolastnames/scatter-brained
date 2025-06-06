@@ -1,0 +1,47 @@
+@mixin themeSpacing {
+  --gap-xsmall: 2px;
+  --gap-small: 4px;
+  --gap-medium: 8px;
+  --gap-large: 12px;
+  --gap-xlarge: 20px;
+}
+
+.lightTheme {
+  @include themeSpacing;
+  --primary-accent: #11124b;
+  --primary-regular: #1a1cad;
+  --primary-trivial: #3336f5;
+  --secondary-accent: #0a3f31;
+  --secondary-regular: #0f5b47;
+  --secondary-trivial: #24b18c;
+  --grey-accent: #505050;
+  --grey-regular: #929292;
+  --grey-trivial: #cfcfcf;
+  --background: #f9f6f9;
+  --font-color: #060000;
+}
+
+.darkTheme {
+  @include themeSpacing;
+  --primary-accent: #3336f5;
+  --primary-regular: #1a1cad;
+  --primary-trivial: #11124b;
+  --secondary-accent: #24b18c;
+  --secondary-regular: #0f5b47;
+  --secondary-trivial: #0a3f31;
+  --grey-accent: #cfcfcf;
+  --grey-regular: #929292;
+  --grey-trivial: #505050;
+  --background: #060000;
+  --font-color: #f9f6f9;
+}
+
+.page {
+  background-color: var(--background);
+  color: var(--font-color);
+  width: 100vw;
+  //height: 100%;
+  margin: 0;
+  min-height: 100vh; /* make sure it is at least as tall as the viewport */
+  position: relative;
+}

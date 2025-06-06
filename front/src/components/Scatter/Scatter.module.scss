@@ -1,0 +1,16 @@
+.scatter {
+  border-width: 2px;
+  border-color: --var(--primary-accent);
+  border-style: solid;
+}
+
+.inner {
+  border-width: 1px;
+  border-color: --var(--primary-accent);
+  border-style: solid;
+  position: absolute;
+  transition:
+    top 0.25s,
+    left 0.25s,
+    transform 0.25s;
+}
