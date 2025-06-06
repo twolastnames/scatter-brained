@@ -24,7 +24,13 @@ export function CardSet(): ReactNode {
     }));
   return (
     <div data-testid="CardSet" className={styles.cardset}>
-      <Scatter size={400} selected={selected} selections={availableCards}>
+      <Scatter
+        mapRotation={(angle) => angle}
+        readOnly={false}
+        size={400}
+        selected={selected}
+        selections={availableCards}
+      >
         Hello World
       </Scatter>
     </div>
