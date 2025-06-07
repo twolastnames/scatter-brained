@@ -93,7 +93,7 @@ socket.onmessage = (event) => {
 
 export async function changeEstimationState(getChange: Changer) {
   await stateInitialization;
-  const comingState = getChange(currentState);
+  const comingState = getChange(JSON.parse(JSON.stringify(currentState)));
   const difference = compare(currentState, comingState);
   if (difference && difference.length > 0) {
     socket.send(JSON.stringify({ $patch: difference }));
