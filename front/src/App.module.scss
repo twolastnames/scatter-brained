@@ -15,3 +15,11 @@
   justify-content: center;
   padding: var(--gap-xlarge);
 }
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 460px;
+  justify-content: space-around;
+}
