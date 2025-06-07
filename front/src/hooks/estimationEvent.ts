@@ -48,6 +48,10 @@ export const waitForInitialization = new Promise((resolve) => {
 
 let currentState: EstimationState = {};
 
+export function getEstimationState(): EstimationState {
+  return currentState;
+}
+
 export const stateInitialization = new Promise((resolve) => {
   waitForInitialization.then(() => {
     const tryAgain = () => {
