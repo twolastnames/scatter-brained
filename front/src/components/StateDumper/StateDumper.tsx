@@ -3,7 +3,14 @@ import { useEstimationEvent } from "../../hooks/estimationEvent";
 import styles from "./StateDumper.module.scss";
 
 export function StateDumper(): ReactNode {
-  const state = useEstimationEvent((current) => current || {}, {});
+  const state = useEstimationEvent((current) => current || {}, {
+    isEqual: () => false,
+  });
   const text = JSON.stringify(state, null, 2);
-  return <span className={styles.border}>{text}</span>;
+  console.log("statedumperrrrr", { text });
+  return (
+    <span key={text} className={styles.border}>
+      {text}
+    </span>
+  );
 }
