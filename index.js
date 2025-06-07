@@ -18,15 +18,17 @@ wss.on('connection', function connection(ws) {
     const data = JSON.parse(json)
     if(!!data?.['$patch']) {
       ws.send(json)
+      console.log('sent:', JSON.stringify(data))
       state = applyPatch(state, data['$patch']).newDocument
     }
   });
 
-  const initialPatch = JSON.stringify(compare({}, state).newDocument)
+  const initialPatch = JSON.stringify(compare({}, state))
+  console.log('initialized:', {state: JSON.stringify(state),  initialPatch})
   if(initialPatch == null) {
     return
   }
-  const initial = `{$patch:${initialPatch}}`
+  const initial = `{"$patch":${initialPatch}}`
   ws.send(initial);
 });
 
