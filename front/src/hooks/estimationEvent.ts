@@ -100,6 +100,25 @@ export async function changeEstimationState(getChange: Changer) {
   }
 }
 
+export async function changeParticipant(
+  id: string,
+  alterParticipant: (participant: Participant) => Participant,
+) {
+  await changeEstimationState((current) => {
+    if (!current.participants) {
+      current.participants = {};
+    }
+    if (!current.participants?.[id]) {
+      current.participants[id] = {
+        lurker: false,
+        name: id,
+      };
+    }
+    current.participants[id] = alterParticipant(current.participants[id]);
+    return current;
+  });
+}
+
 type EstimationEventOptions<RESULT> = {
   isEqual?: InterestComparable<RESULT | undefined>;
 };
