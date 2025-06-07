@@ -20,7 +20,7 @@ export const initialEstimationState: EstimationState = {
 export type InterestGrabber<TYPE> = (
   current: EstimationState,
   previous?: EstimationState,
-) => TYPE | void;
+) => TYPE;
 export type InterestComparable<TYPE> = (
   current: TYPE | undefined,
   next: TYPE | undefined,
@@ -127,7 +127,9 @@ export function useEstimationEvent<RESULT>(
   getRerendableValue: InterestGrabber<RESULT | undefined>,
   options?: EstimationEventOptions<RESULT>,
 ) {
-  const [value, setValue] = useState<RESULT | undefined>(undefined);
+  const [value, setValue] = useState<RESULT | undefined>(
+    getRerendableValue(currentState, undefined),
+  );
   useEffect(() => {
     const listener = (current: EstimationState, previous?: EstimationState) => {
       const result = getRerendableValue(current, previous);
