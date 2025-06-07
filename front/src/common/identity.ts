@@ -12,7 +12,6 @@ export function setName(name: string) {
 
 export function getName() {
   const name = localStorage.getItem("name");
-  console.log("getNameeeee", { name });
   if (name || name === "") {
     return name;
   }
