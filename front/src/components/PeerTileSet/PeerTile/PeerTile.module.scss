@@ -1,2 +1,12 @@
 .peertile {
+  justify-items: center;
+  height: 100%;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-medium);
+  height: 100%;
 }
