@@ -25,15 +25,16 @@ export function PeerTileSet(): ReactNode {
     },
   );
 
+  const selections = Object.keys(participants || {}).map((id: string) => ({
+    selection: <PeerTile id={id} />,
+    className: styles.scatteredTile,
+  }));
   return (
     <Scatter
       mapRotation={() => 0}
       size={400}
       selected={0}
-      selections={Object.keys(participants || {}).map((id: string) => ({
-        selection: <PeerTile id={id} />,
-        className: styles.scatteredTile,
-      }))}
+      selections={selections.length < 2 ? [] : selections}
       readOnly={true}
     >
       Brained
