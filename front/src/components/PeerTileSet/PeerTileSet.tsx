@@ -5,19 +5,26 @@ import { useEstimationEvent } from "../../hooks/estimationEvent";
 import { PeerTile } from "./PeerTile/PeerTile";
 
 export function PeerTileSet(): ReactNode {
-  const participants = useEstimationEvent((current) => current?.participants, {
-    isEqual: (current, previous) => {
-      const now = Object.keys(current || []).filter(
-        (key) => current?.[key].lurker === false,
-      );
-      const before = Object.keys(previous || []).filter(
-        (key) => previous?.[key].lurker === false,
-      );
-      now.sort();
-      before.sort();
-      return JSON.stringify(now) === JSON.stringify(before);
+  const participants = useEstimationEvent(
+    (current) =>
+      Object.entries(current?.participants || {}).reduce(
+        (current, [key, value]) => ({
+          ...current,
+          ...(value?.lurker === false ? { [key]: value } : {}),
+        }),
+        {},
+      ),
+    {
+      isEqual: (current, previous) => {
+        const now = Object.keys(current || []);
+        const before = Object.keys(previous || []);
+        now.sort();
+        before.sort();
+        return JSON.stringify(now) === JSON.stringify(before);
+      },
     },
-  });
+  );
+
   return (
     <Scatter
       mapRotation={() => 0}
