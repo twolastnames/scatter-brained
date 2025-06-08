@@ -14,24 +14,24 @@ function App() {
       <div className={styles.page} data-testid="ScatterBrained">
         <div className={styles.estimation}>
           <CardSet />
-          <div className={styles.controls}>
-            <Identity />
-            <div>
-              <input
-                name="themeToggle"
-                onClick={(event) => {
-                  document.documentElement.dataset["theme"] = event
-                    .currentTarget.checked
-                    ? "dark"
-                    : "light";
-                }}
-                type="checkbox"
-                id="themeSwitch"
-              />
-              <label for="themeToggle">Dark Mode</label>
-            </div>
-          </div>
           <PeerTileSet />
+        </div>
+        <div className={styles.controls}>
+          <Identity />
+          <div>
+            <input
+              name="themeToggle"
+              onClick={(event) => {
+                document.documentElement.dataset["theme"] = event.currentTarget
+                  .checked
+                  ? "dark"
+                  : "light";
+              }}
+              type="checkbox"
+              id="themeSwitch"
+            />
+            <label for="themeToggle">Dark Mode</label>
+          </div>
         </div>
         <StateDumper />
       </div>
