@@ -79,7 +79,10 @@ function patchEstimationState(data: string) {
       return;
     }
     for (const listener of listeners) {
-      listener(currentState, previous);
+      listener(
+        JSON.parse(JSON.stringify(currentState)),
+        JSON.parse(JSON.stringify(previous)),
+      );
     }
   }
   if (JSON.stringify(currentState) === "{}") {
