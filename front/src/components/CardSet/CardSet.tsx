@@ -3,6 +3,8 @@ import styles from "./CardSet.module.scss";
 import { Scatter } from "../Scatter/Scatter";
 import { Card } from "./Card/Card";
 import { cardMap } from "../../common/cardMap";
+import { changeParticipant } from "../../hooks/estimationEvent";
+import { getIdentity } from "../../common/identity";
 
 export function CardSet(): ReactNode {
   const [selected, setSelected] = useState<number>(0);
@@ -16,6 +18,10 @@ export function CardSet(): ReactNode {
         <Card
           value={value}
           onClick={() => {
+            changeParticipant(getIdentity(), (current) => ({
+              ...current,
+              selection: value,
+            }));
             setSelected(index);
           }}
         />
