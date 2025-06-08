@@ -133,23 +133,23 @@ export function useEstimationEvent<RESULT>(
   const [value, setValue] = useState<RESULT | undefined>(
     getRerendableValue(currentState, undefined),
   );
-  useEffect(() => {
-    const listener = (current: EstimationState, previous?: EstimationState) => {
-      const result = getRerendableValue(current, previous);
-      if (result === undefined) {
-        return;
-      }
-      if (options?.isEqual) {
-        if (!options.isEqual(value, result)) {
-          setValue(result);
-        }
-        return;
-      }
-      if (value !== result) {
+  const listener = (current: EstimationState, previous?: EstimationState) => {
+    const result = getRerendableValue(current, previous);
+    if (result === undefined) {
+      return;
+    }
+    if (options?.isEqual) {
+      if (!options.isEqual(value, result)) {
         setValue(result);
       }
-    };
+      return;
+    }
+    if (value !== result) {
+      setValue(result);
+    }
+  };
 
+  useEffect(() => {
     listeners.add(listener);
     return () => {
       listeners.delete(listener);

@@ -6,8 +6,17 @@ import { PeerTile } from "./PeerTile/PeerTile";
 
 export function PeerTileSet(): ReactNode {
   const participants = useEstimationEvent((current) => current?.participants, {
-    isEqual: (current, previous) =>
-      Object.keys(current || []).length === Object.keys(previous || []).length,
+    isEqual: (current, previous) => {
+      const now = Object.keys(current || []).filter(
+        (key) => current?.[key].lurker === false,
+      );
+      const before = Object.keys(previous || []).filter(
+        (key) => previous?.[key].lurker === false,
+      );
+      now.sort();
+      before.sort();
+      return JSON.stringify(now) === JSON.stringify(before);
+    },
   });
   return (
     <Scatter
