@@ -1,19 +1,25 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./CardSet.module.scss";
 import { Scatter } from "../Scatter/Scatter";
 import { Card } from "./Card/Card";
 import { cardMap } from "../../common/cardMap";
-import { changeParticipant } from "../../hooks/estimationEvent";
+import {
+  changeParticipant,
+  useEstimationEvent,
+} from "../../hooks/estimationEvent";
 import { getIdentity } from "../../common/identity";
 
 export function CardSet(): ReactNode {
-  const [selected, setSelected] = useState<number>(0);
+  const selected = useEstimationEvent(
+    (current) => current?.participants?.[getIdentity()].selected,
+    { isEqual: () => false },
+  );
   const availableCards = cardMap
     .reduce(
       (current: Array<number | null>, _, index) => [...current, index],
       [null],
     )
-    .map((value, index) => ({
+    .map((value) => ({
       selection: (
         <Card
           value={value}
@@ -22,7 +28,6 @@ export function CardSet(): ReactNode {
               ...current,
               selected: value == null ? undefined : value,
             }));
-            setSelected(index);
           }}
         />
       ),
@@ -34,7 +39,7 @@ export function CardSet(): ReactNode {
         mapRotation={(angle) => angle}
         readOnly={false}
         size={400}
-        selected={selected}
+        selected={selected == null ? 0 : selected + 1}
         selections={availableCards}
       >
         Scatter
