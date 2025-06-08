@@ -15,14 +15,18 @@ export function Identity(): ReactNode {
     }, 0);
   }, [value]);
   return (
-    <input
-      type="text"
-      data-testid="Identity"
-      className={styles.identity}
-      onChange={(event) => {
-        setValue(event.target.value);
-      }}
-      value={value}
-    />
+    <div>
+      <label for="identity">Name</label>
+      <input
+        type="text"
+        data-testid="Identity"
+        name="identity"
+        className={styles.identity}
+        onChange={(event) => {
+          setValue(event.target.value);
+        }}
+        value={value}
+      />
+    </div>
   );
 }
