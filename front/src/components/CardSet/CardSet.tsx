@@ -31,7 +31,7 @@ export function CardSet(): ReactNode {
         selected={selected}
         selections={availableCards}
       >
-        Hello World
+        Scatter
       </Scatter>
     </div>
   );

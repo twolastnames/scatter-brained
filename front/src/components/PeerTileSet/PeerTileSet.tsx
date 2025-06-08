@@ -29,8 +29,7 @@ export function PeerTileSet(): ReactNode {
       }))}
       readOnly={true}
     >
-      {" "}
-      <div data-testid="PeerTileSet" className={styles.peertileset}></div>{" "}
+      Brained
     </Scatter>
   );
 }
