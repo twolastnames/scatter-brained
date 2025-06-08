@@ -48,8 +48,19 @@ export const waitForInitialization = new Promise((resolve) => {
 
 let currentState: EstimationState = {};
 
-export function getEstimationState(): EstimationState {
-  return currentState;
+export function useInitialEstimationState(): EstimationState {
+  const [value, setValue] = useState<EstimationState>(currentState);
+  useEffect(() => {
+    const wait = () => {
+      if (!currentState || JSON.stringify(currentState) === "{}") {
+        setTimeout(wait, 200);
+        return;
+      }
+      setValue(JSON.parse(JSON.stringify(currentState)));
+    };
+    wait();
+  }, []);
+  return value;
 }
 
 export const stateInitialization = new Promise((resolve) => {
