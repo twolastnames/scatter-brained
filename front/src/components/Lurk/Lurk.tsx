@@ -3,14 +3,14 @@ import { type LurkType } from "./LurkType";
 import { Checkbox } from "../Checkbox/Checkbox";
 import {
   changeParticipant,
-  useInitialEstimationState,
+  useEstimationEvent,
 } from "../../hooks/estimationEvent";
-import { getIdentity } from "../../common/identity";
 
 export function Lurk(props: LurkType): ReactNode {
-  const startValue =
-    useInitialEstimationState()?.participants?.[getIdentity()].lurker;
-  if (startValue == null) {
+  const value = useEstimationEvent(
+    (current) => current?.participants?.[props.id].lurker,
+  );
+  if (value == null) {
     return <></>;
   }
   return (
@@ -22,7 +22,7 @@ export function Lurk(props: LurkType): ReactNode {
           lurker: checked,
         }));
       }}
-      startValue={startValue}
+      startValue={value}
     >
       Lurk
     </Checkbox>
