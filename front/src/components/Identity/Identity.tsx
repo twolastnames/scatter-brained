@@ -2,13 +2,16 @@ import { useEffect, useState, type ReactNode } from "react";
 import styles from "./Identity.module.scss";
 import { getIdentity, getName, setName } from "../../common/identity";
 import { changeParticipant } from "../../hooks/estimationEvent";
+import { debounce } from "lodash";
+
+const debouncedChangeParticipant = debounce(changeParticipant, 1000);
 
 export function Identity(): ReactNode {
   const [value, setValue] = useState<string>(getName());
   useEffect(() => {
     setName(value);
     setTimeout(() => {
-      changeParticipant(getIdentity(), (participant) => ({
+      debouncedChangeParticipant(getIdentity(), (participant) => ({
         ...participant,
         name: getName(),
       }));
