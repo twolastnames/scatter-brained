@@ -4,6 +4,7 @@ import { CardSet } from "./components/CardSet/CardSet";
 import { useEffect } from "react";
 import { PeerTileSet } from "./components/PeerTileSet/PeerTileSet";
 import { Identity } from "./components/Identity/Identity";
+import { Checkbox } from "./components/Checkbox/Checkbox";
 
 function App() {
   useEffect(() => {
@@ -18,20 +19,16 @@ function App() {
         </div>
         <div className={styles.controls}>
           <Identity />
-          <div>
-            <input
-              name="themeToggle"
-              onClick={(event) => {
-                document.documentElement.dataset["theme"] = event.currentTarget
-                  .checked
-                  ? "dark"
-                  : "light";
-              }}
-              type="checkbox"
-              id="themeSwitch"
-            />
-            <label for="themeToggle">Dark Mode</label>
-          </div>
+          <Checkbox
+            id="themeSwitch"
+            onClick={(checked) => {
+              document.documentElement.dataset["theme"] = checked
+                ? "dark"
+                : "light";
+            }}
+          >
+            Dark Mode
+          </Checkbox>
         </div>
         <StateDumper />
       </div>
