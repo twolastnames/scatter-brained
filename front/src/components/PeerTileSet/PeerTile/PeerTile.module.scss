@@ -1,14 +1,26 @@
 .peertile {
   justify-items: center;
-  height: 100%;
-}
-
-.contents {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--gap-medium);
   height: 100%;
+  padding: var(--gap-small);
+}
+
+.contents {
+  padding: var(--gap-small);
+  display: flex;
+  border: 1px solid var(--grey-regular);
+  gap: var(--gap-medium);
+  border-radius: var(--gap-xlarge);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scatter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .nullCard {
@@ -18,4 +30,20 @@
   border-radius: 10px;
   width: 100%;
   height: 100%;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-small);
+}
+
+.lurk {
+  margin-top: var(--gap-medium);
 }

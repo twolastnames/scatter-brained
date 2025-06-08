@@ -18,20 +18,30 @@ export function PeerTile(props: PeerTileType): ReactNode {
   return (
     <div data-testid="PeerTile" className={styles.peertile}>
       <div className={styles.contents}>
-        <div className={styles.scatter}>
-          <Scatter
-            readOnly={true}
-            size={40}
-            selected={participant?.selected != null ? 0 : 1}
-            selections={[
-              { selection: <></> },
-              { selection: <div className={styles.nullCard} /> },
-            ]}
-            mapRotation={() => 0}
-          />
+        <div className={styles.controls}>
+          <div className={styles.scatter}>
+            <Scatter
+              readOnly={true}
+              size={40}
+              selected={participant?.selected != null ? 0 : 1}
+              selections={[
+                { selection: <></> },
+                { selection: <div className={styles.nullCard} /> },
+              ]}
+              mapRotation={() => 0}
+            />
+            {participant?.selected == null ? (
+              <div className={styles.lurk}>
+                <Lurk id={props.id} />{" "}
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-        <div className={styles.name}>{participant?.name || ""}</div>
-        {participant?.selected == null ? <Lurk id={props.id} /> : <></>}
+        <div className={styles.name}>
+          <div>{participant?.name || ""}</div>
+        </div>
       </div>
     </div>
   );
