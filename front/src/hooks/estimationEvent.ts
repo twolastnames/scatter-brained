@@ -146,9 +146,6 @@ export function useEstimationEvent<RESULT>(
   );
   const listener = (current: EstimationState, previous?: EstimationState) => {
     const result = getRerendableValue(current, previous);
-    if (result === undefined) {
-      return;
-    }
     if (options?.isEqual) {
       if (!options.isEqual(result, value)) {
         setValue(result);
