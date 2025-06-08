@@ -139,7 +139,7 @@ export function useEstimationEvent<RESULT>(
       return;
     }
     if (options?.isEqual) {
-      if (!options.isEqual(value, result)) {
+      if (!options.isEqual(result, value)) {
         setValue(result);
       }
       return;
