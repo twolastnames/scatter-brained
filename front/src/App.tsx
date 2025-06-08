@@ -1,4 +1,3 @@
-import { StateDumper } from "./components/StateDumper/StateDumper";
 import styles from "./App.module.scss";
 import { CardSet } from "./components/CardSet/CardSet";
 import { useEffect } from "react";
@@ -16,15 +15,16 @@ function App() {
     <>
       <div className={styles.page} data-testid="ScatterBrained">
         <div className={styles.estimation}>
-          <CardSet />
+          <div className={styles.controls}>
+            <CardSet />
+            <div className={styles.controlList}>
+              <Identity />
+              <Theme />
+              <Lurk id={getIdentity()} />
+            </div>
+          </div>
           <PeerTileSet />
         </div>
-        <div className={styles.controls}>
-          <Identity />
-          <Theme />
-          <Lurk id={getIdentity()} />
-        </div>
-        <StateDumper />
       </div>
     </>
   );

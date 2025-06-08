@@ -32,7 +32,7 @@ export function PeerTileSet(): ReactNode {
   return (
     <Scatter
       mapRotation={() => 0}
-      size={400}
+      size={600}
       selected={0}
       selections={selections.length < 2 ? [] : selections}
       readOnly={true}
