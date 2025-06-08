@@ -6,7 +6,10 @@ const fs = require('fs');
 const {compare, applyPatch} = require('fast-json-patch')
 
 
-const wss = new WebSocketServer({ port: process.env.SOCKET_PORT || 3000 });
+const wss = new WebSocketServer({
+  clientTracking: true,
+  port: process.env.SOCKET_PORT || 3000,
+});
 
 let state = {}
 
@@ -17,7 +20,9 @@ wss.on('connection', function connection(ws) {
     const json = buffer.toString()
     const data = JSON.parse(json)
     if(!!data?.['$patch']) {
-      ws.send(json)
+      for(const client of wss.clients) {
+        client.send(json)
+      }
       console.log('sent:', JSON.stringify(data))
       state = applyPatch(state, data['$patch']).newDocument
     }
