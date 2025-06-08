@@ -7,8 +7,9 @@
   justify-content: center;
 }
 
-.innerStyle:hover {
+.pointable:hover {
   border-color: var(--secondary-accent);
+  background-color: var(--grey-trivial);
   transition:
     border-width 0.25s,
     transform 0.25s;
@@ -16,7 +17,7 @@
 
 .innerStyle {
   border-width: 1px;
-  border-color: var(--secondary-regular);
+  border-color: var(--grey-regular);
   border-style: solid;
   background-color: var(--secondary-trivial);
   cursor: default;
