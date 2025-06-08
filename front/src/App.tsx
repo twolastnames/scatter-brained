@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { PeerTileSet } from "./components/PeerTileSet/PeerTileSet";
 import { Identity } from "./components/Identity/Identity";
 import { Checkbox } from "./components/Checkbox/Checkbox";
+import { Lurk } from "./components/Lurk/Lurk";
+import { getIdentity } from "./common/identity";
 
 function App() {
   useEffect(() => {
@@ -29,6 +31,7 @@ function App() {
           >
             Dark Mode
           </Checkbox>
+          <Lurk id={getIdentity()} />
         </div>
         <StateDumper />
       </div>
