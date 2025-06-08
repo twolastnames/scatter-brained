@@ -6,6 +6,7 @@ import {
   type EstimationState,
 } from "../../../hooks/estimationEvent";
 import { Scatter } from "../../Scatter/Scatter";
+import { Lurk } from "../../Lurk/Lurk";
 
 export function PeerTile(props: PeerTileType): ReactNode {
   const getParticipant = (state: EstimationState) =>
@@ -21,12 +22,16 @@ export function PeerTile(props: PeerTileType): ReactNode {
           <Scatter
             readOnly={true}
             size={40}
-            selected={participant?.selected !== null ? 1 : 0}
-            selections={[{ selection: <></> }, { selection: <div /> }]}
+            selected={participant?.selected != null ? 0 : 1}
+            selections={[
+              { selection: <></> },
+              { selection: <div className={styles.nullCard} /> },
+            ]}
             mapRotation={() => 0}
           />
         </div>
         <div className={styles.name}>{participant?.name || ""}</div>
+        {participant?.selected == null ? <Lurk id={props.id} /> : <></>}
       </div>
     </div>
   );

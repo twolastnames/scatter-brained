@@ -4,7 +4,7 @@ import styles from "./StateDumper.module.scss";
 import { Checkbox } from "../Checkbox/Checkbox";
 
 export function StateDumper(): ReactNode {
-  const [components, setComponents] = useState<ReactNode>(<></>);
+  const [checked, setChecked] = useState<boolean>(false);
   const state = useEstimationEvent((current) => current || {}, {
     isEqual: () => false,
   });
@@ -12,22 +12,15 @@ export function StateDumper(): ReactNode {
     <>
       <Checkbox
         id="developermode"
-        startValue={false}
-        onClick={(checked) => {
-          setComponents(
-            checked ? (
-              <span className={styles.border}>
-                <pre>{JSON.stringify(state, null, 2)}</pre>
-              </span>
-            ) : (
-              <></>
-            ),
-          );
-        }}
+        useStateTracker={() => [checked, setChecked]}
       >
         Development Mode
       </Checkbox>
-      {components}
+      {checked && (
+        <span key={JSON.stringify(state)} className={styles.border}>
+          <pre>{JSON.stringify(state, null, 2)}</pre>
+        </span>
+      )}
     </>
   );
 }

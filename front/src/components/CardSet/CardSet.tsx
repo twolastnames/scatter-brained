@@ -20,7 +20,7 @@ export function CardSet(): ReactNode {
           onClick={() => {
             changeParticipant(getIdentity(), (current) => ({
               ...current,
-              selection: value,
+              selected: value == null ? undefined : value,
             }));
             setSelected(index);
           }}

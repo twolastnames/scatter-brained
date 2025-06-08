@@ -1,7 +1,9 @@
 import type { PropsWithChildren } from "react";
 
 export interface CheckboxType extends PropsWithChildren {
-  onClick: (value: boolean) => void;
   id: string;
-  startValue?: boolean;
+  useStateTracker: () => [
+    value: boolean | undefined,
+    setValue: (value: boolean) => void,
+  ];
 }

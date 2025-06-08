@@ -1,14 +1,13 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./Checkbox.module.scss";
 import { type CheckboxType } from "./CheckboxType";
 
 export function Checkbox(props: CheckboxType): ReactNode {
-  const [checked, setChecked] = useState<boolean>(!!props.startValue);
+  const [checked, setChecked] = props.useStateTracker();
   return (
     <div data-testid="Checkbox" className={styles.checkbox}>
       <input
         onClick={(event) => {
-          props.onClick(event.currentTarget.checked);
           setChecked(event.currentTarget.checked);
         }}
         checked={checked}

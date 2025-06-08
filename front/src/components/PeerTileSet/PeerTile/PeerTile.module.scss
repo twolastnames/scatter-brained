@@ -10,3 +10,12 @@
   gap: var(--gap-medium);
   height: 100%;
 }
+
+.nullCard {
+  border-style: none;
+  background-color: var(--background);
+  background: var(--background);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}

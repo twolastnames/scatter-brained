@@ -4,9 +4,9 @@ import { CardSet } from "./components/CardSet/CardSet";
 import { useEffect } from "react";
 import { PeerTileSet } from "./components/PeerTileSet/PeerTileSet";
 import { Identity } from "./components/Identity/Identity";
-import { Checkbox } from "./components/Checkbox/Checkbox";
 import { Lurk } from "./components/Lurk/Lurk";
 import { getIdentity } from "./common/identity";
+import { Theme } from "./components/Theme/Theme";
 
 function App() {
   useEffect(() => {
@@ -21,16 +21,7 @@ function App() {
         </div>
         <div className={styles.controls}>
           <Identity />
-          <Checkbox
-            id="themeSwitch"
-            onClick={(checked) => {
-              document.documentElement.dataset["theme"] = checked
-                ? "dark"
-                : "light";
-            }}
-          >
-            Dark Mode
-          </Checkbox>
+          <Theme />
           <Lurk id={getIdentity()} />
         </div>
         <StateDumper />
