@@ -35,6 +35,14 @@
   gap: var(--gap-small);
 }
 
+.hide {
+  opacity: 0;
+}
+
 .lurk {
-  margin-top: var(--gap-medium);
+  margin-top: var(--gap-large);
+  opacity: 1;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
 }

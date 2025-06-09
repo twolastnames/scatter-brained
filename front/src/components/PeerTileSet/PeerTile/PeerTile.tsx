@@ -21,13 +21,13 @@ export function PeerTile(props: PeerTileType): ReactNode {
         <div className={styles.controls}>
           <div className={styles.scatter}>
             <Result id={props.id} />
-            {participant?.selected == null ? (
-              <div className={styles.lurk}>
-                <Lurk id={props.id} />{" "}
-              </div>
-            ) : (
-              <></>
-            )}
+            <div
+              className={
+                participant?.selected == null ? styles.lurk : styles.hide
+              }
+            >
+              <Lurk id={props.id} />{" "}
+            </div>
           </div>
         </div>
         <div className={styles.name}>
