@@ -11,10 +11,12 @@ export type EstimationState = {
   participants?: {
     [id: string]: Participant;
   };
+  displayed?: boolean;
 };
 
 export const initialEstimationState: EstimationState = {
   participants: {},
+  displayed: false,
 };
 
 export type InterestGrabber<TYPE> = (
@@ -97,7 +99,10 @@ function patchEstimationState(data: string) {
     }
   }
   if (JSON.stringify(currentState) === "{}") {
-    changeEstimationState((current) => ({ dipslayed: true, ...current }));
+    changeEstimationState((current) => ({
+      ...current,
+      ...initialEstimationState,
+    }));
   }
 }
 
