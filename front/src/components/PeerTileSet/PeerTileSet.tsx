@@ -26,7 +26,7 @@ export function PeerTileSet(): ReactNode {
   );
 
   const selections = Object.keys(participants || {}).map((id: string) => ({
-    selection: <PeerTile id={id} />,
+    selection: <PeerTile key={`participant-${id}`} id={id} />,
     className: styles.scatteredTile,
   }));
   return (
