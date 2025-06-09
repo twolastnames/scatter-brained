@@ -152,9 +152,7 @@ export function useEstimationEvent<RESULT>(
       }
       return;
     }
-    if (value !== result) {
-      setValue(result);
-    }
+    setValue(result);
   };
 
   useEffect(() => {
