@@ -20,7 +20,7 @@
 .scatter {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-items: space-between;
 }
 
 .name {

@@ -5,7 +5,6 @@ import {
   useEstimationEvent,
   type EstimationState,
 } from "../../../hooks/estimationEvent";
-import { Lurk } from "../../Lurk/Lurk";
 import { Result } from "./Result/Result";
 
 export function PeerTile(props: PeerTileType): ReactNode {
@@ -26,7 +25,7 @@ export function PeerTile(props: PeerTileType): ReactNode {
                 participant?.selected == null ? styles.lurk : styles.hide
               }
             >
-              <Lurk id={props.id} />{" "}
+              {props.children}
             </div>
           </div>
         </div>
