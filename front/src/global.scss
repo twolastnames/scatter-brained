@@ -52,6 +52,12 @@
   --font-color: #daece6;
 }
 
+button {
+  background: var(--background);
+  background-color: var(--background);
+  color: var(--font-color);
+}
+
 input {
   background: var(--background);
   background-color: var(--background);
