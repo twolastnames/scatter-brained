@@ -106,6 +106,12 @@ function patchEstimationState(data: string) {
   }
 }
 
+socket.onclose = () => {
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
+};
+
 socket.onmessage = (event) => {
   patchEstimationState(event.data);
 };
