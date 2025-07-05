@@ -19,7 +19,7 @@ export function Identity(): ReactNode {
   }, [value]);
   return (
     <div>
-      <label for="identity">Name</label>
+      <label htmlFor="identity">Name</label>
       <input
         type="text"
         data-testid="Identity"
