@@ -7,7 +7,6 @@ import { Identity } from "./components/Identity/Identity";
 import { Lurk } from "./components/Lurk/Lurk";
 import { getIdentity } from "./common/identity";
 import { Theme } from "./components/Theme/Theme";
-import { Display } from "./components/Display/Display";
 
 function App() {
   useEffect(() => {
@@ -20,7 +19,6 @@ function App() {
           <div className={styles.controls}>
             <CardSet />
             <div className={styles.controlList}>
-              <Display />
               <Identity />
               <Lurk id={getIdentity()} />
               <Theme />

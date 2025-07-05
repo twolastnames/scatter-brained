@@ -2,7 +2,30 @@
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  border: 1px solid var(--primary-accent);
+  border: 1px solid var(--secondary-regular);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition:
+    opacity 0.25s,
+    transition 0.25s;
+}
+
+.show {
+  transition:
+    opacity 0.25s,
+    transition 0.25s;
+}
+
+.inner {
+  font: var(--font-regular-xlarge);
+  color: var(--secondary-accent);
+  text-align: center;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
 }
 
 .nullCard {

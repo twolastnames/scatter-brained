@@ -5,6 +5,7 @@ import { useEstimationEvent } from "../../hooks/estimationEvent";
 import { PeerTile } from "./PeerTile/PeerTile";
 import { type Participant } from "../../hooks/estimationEvent";
 import { Lurk } from "../Lurk/Lurk";
+import { MutableDisplay } from "./MutableDisplay/MutableDisplay";
 
 function getNumberFromComparision<TYPE>(a: TYPE, b: TYPE): -1 | 0 | 1 {
   return a == b ? 0 : a > b ? -1 : 1;
@@ -24,6 +25,7 @@ const findRandomishSelection = (values: Array<boolean>) => {
 };
 
 export function PeerTileSet(): ReactNode {
+  const displayed = useEstimationEvent((current) => !!current?.displayed);
   const participants: { [arg: string]: Participant } =
     useEstimationEvent(
       (current) =>
@@ -48,11 +50,18 @@ export function PeerTileSet(): ReactNode {
   const participantArray = Object.entries(participants).map(
     ([id, value]: [string, Participant]) => ({ id, ...value }),
   );
-  participantArray.sort((a, b) => getNumberFromComparision(b.name, a.name));
 
-  const selection = findRandomishSelection(
-    participantArray.map(({ selected }) => !selected),
-  );
+  if (displayed) {
+    participantArray.sort((a, b) =>
+      getNumberFromComparision(b.selected || 0, a.selected || 0),
+    );
+  } else {
+    participantArray.sort((a, b) => getNumberFromComparision(b.name, a.name));
+  }
+
+  const selection = displayed
+    ? 0
+    : findRandomishSelection(participantArray.map(({ selected }) => !selected));
   const selections = participantArray.map(
     (participant: Participant & { id: string }, index: number) => ({
       selection: (
@@ -73,12 +82,12 @@ export function PeerTileSet(): ReactNode {
   return (
     <Scatter
       mapRotation={() => 0}
-      size={600}
+      size={700}
       selected={selection}
       selections={selections.length < 2 ? [] : selections}
       readOnly={true}
     >
-      Brained
+      <MutableDisplay>Brained</MutableDisplay>
     </Scatter>
   );
 }

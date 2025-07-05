@@ -11,20 +11,29 @@ export function Result(props: ResultType): ReactNode {
     { isEqual: () => false },
   );
   const displayed = useEstimationEvent((current) => current?.displayed);
-  return selected == null || !!displayed == false ? (
-    <Scatter
-      readOnly={true}
-      size={40}
-      selected={selected != null ? 0 : 1}
-      selections={[
-        { selection: <></> },
-        { selection: <div className={styles.nullCard} /> },
-      ]}
-      mapRotation={() => 0}
-    />
-  ) : (
-    <div data-testid="Result" className={styles.result}>
-      {cardMap[selected]}
-    </div>
+  const show = selected == null || !!displayed == false;
+  return (
+    <>
+      <div className={show ? styles.show : styles.hidden}>
+        <Scatter
+          readOnly={true}
+          size={40}
+          selected={selected != null ? 0 : 1}
+          selections={[
+            { selection: <></> },
+            { selection: <div className={styles.nullCard} /> },
+          ]}
+          mapRotation={() => 0}
+        />
+      </div>
+      <div
+        data-testid="Result"
+        className={show ? styles.hidden : styles.result}
+      >
+        <div className={styles.inner}>
+          {selected == null ? "?" : cardMap[selected]}
+        </div>
+      </div>
+    </>
   );
 }
