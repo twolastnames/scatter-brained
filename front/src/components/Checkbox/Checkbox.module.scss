@@ -1,3 +1,30 @@
-.checkbox {
-  gap: var(--gap-medium);
+.box {
+  display: flex;
+  flex-direction: row;
+}
+
+.shell {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--primary-accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2px 4px 2px 0;
+}
+
+.inner {
+  width: 8px;
+  height: 8px;
+  align-items: center;
+}
+
+.checked {
+  background-color: var(--primary-regular);
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
 }

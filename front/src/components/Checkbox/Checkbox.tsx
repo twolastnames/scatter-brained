@@ -5,16 +5,18 @@ import { type CheckboxType } from "./CheckboxType";
 export function Checkbox(props: CheckboxType): ReactNode {
   const [checked, setChecked] = props.useStateTracker();
   return (
-    <div data-testid="Checkbox" className={styles.checkbox}>
-      <input
-        onClick={(event) => {
-          setChecked(event.currentTarget.checked);
+    <div className={styles.box}>
+      <div
+        data-testid="Checkbox"
+        key={(!checked).toString()}
+        className={styles.shell}
+        onClick={() => {
+          setChecked(!checked);
         }}
-        checked={checked}
-        type="checkbox"
-        id={props.id}
-      />
-      <label for={props.id}>{props.children}</label>
+      >
+        <div className={checked ? styles.checked : styles.hidden} />
+      </div>
+      <div>{props.children}</div>
     </div>
   );
 }
