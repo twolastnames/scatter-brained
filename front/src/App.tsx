@@ -22,8 +22,8 @@ function App() {
             <div className={styles.controlList}>
               <Display />
               <Identity />
-              <Theme />
               <Lurk id={getIdentity()} />
+              <Theme />
             </div>
           </div>
           <PeerTileSet />
