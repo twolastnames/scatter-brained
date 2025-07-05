@@ -38,7 +38,7 @@ export function CardSet(): ReactNode {
       <Scatter
         mapRotation={(angle) => angle}
         readOnly={false}
-        size={400}
+        size={300}
         selected={selected == null ? 0 : selected + 1}
         selections={availableCards}
       >
