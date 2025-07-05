@@ -8,6 +8,7 @@ const {compare, applyPatch} = require('fast-json-patch')
 
 const wss = new WebSocketServer({
   clientTracking: true,
+  host: '0.0.0.0',
   port: process.env.SOCKET_PORT || 3000,
 });
 
