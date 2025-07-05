@@ -1,0 +1,11 @@
+.mutablereset {
+  opacity: 1;
+  transition:
+    opacity 0.25s,
+    transform 0.25;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}

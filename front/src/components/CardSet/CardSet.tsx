@@ -8,6 +8,7 @@ import {
   useEstimationEvent,
 } from "../../hooks/estimationEvent";
 import { getIdentity } from "../../common/identity";
+import { MutableReset } from "./MutableReset/MutableReset";
 
 export function CardSet(): ReactNode {
   const selected = useEstimationEvent(
@@ -42,7 +43,7 @@ export function CardSet(): ReactNode {
         selected={selected == null ? 0 : selected + 1}
         selections={availableCards}
       >
-        Scatter
+        <MutableReset>Scatter</MutableReset>
       </Scatter>
     </div>
   );
