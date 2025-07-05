@@ -1,3 +1,4 @@
+import "./global.scss";
 import styles from "./App.module.scss";
 import { CardSet } from "./components/CardSet/CardSet";
 import { useEffect } from "react";
