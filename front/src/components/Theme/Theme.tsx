@@ -1,26 +1,23 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Checkbox } from "../Checkbox/Checkbox";
 
-enum Themes {
-  dark = "dark",
-  light = "light",
-}
+type Themes = "dark" | "light";
 
 const localStorageKey = "theme";
 
-const getStored = () => localStorage.getItem(localStorageKey);
+const getStored: () => Themes = () =>
+  localStorage.getItem(localStorageKey) as Themes;
 
 const setStored = (value: string) =>
   localStorage.setItem(localStorageKey, value);
 
 if (!getStored()) {
-  setStored(Themes.light);
+  setStored("light");
 }
 
-const initial = getStored() || Themes.light;
+const initial = getStored() || "light";
 
-const getOpposite = (theme: string) =>
-  theme == Themes.dark ? Themes.light : Themes.dark;
+const getOpposite = (theme: Themes) => (theme == "dark" ? "light" : "dark");
 
 const useThemeSwitcher = () => {
   const [checked, setChecked] = useState<boolean>(false);
@@ -44,7 +41,7 @@ export function Theme(): ReactNode {
   }, []);
   return (
     <Checkbox id="themeSwitcher" useStateTracker={useThemeSwitcher}>
-      {initial === Themes.light ? "Dark Mode" : "Light Mode"}
+      {initial === "light" ? "Dark Mode" : "Light Mode"}
     </Checkbox>
   );
 }
