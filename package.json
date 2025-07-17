@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend to agile estimation cards",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "test"
   },
