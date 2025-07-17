@@ -8,8 +8,8 @@ const {compare, applyPatch} = require('fast-json-patch')
 
 const wss = new WebSocketServer({
   clientTracking: true,
-  host: '0.0.0.0',
-  port: process.env.SOCKET_PORT || 3000,
+  host: process.env.VITE_LAN_HOST || '0.0.0.0',
+  port: process.env.VITE_WS_LAN_PORT || process.env.VITE_WS_PORT || 3333,
 });
 
 let state = {}
@@ -46,7 +46,7 @@ app.get(/.*/, (req, res) => {
   fs.exists(file, (exists) => res.sendFile(exists ? file : entry))
 })
 
-http.listen(process.env.STATIC_PORT || 8000, function() {
+http.listen(process.env.VITE_PORT || 8888, function() {
   var host = http.address().address
   var port = http.address().port
 });
