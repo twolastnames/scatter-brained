@@ -27,7 +27,7 @@ test:
 	cd $(FRONT) && npm run test
 
 run: build
-	node index.js
+	node index.cjs
 
 dist: $(FRONT_MODULES) $(shell find $(FRONT_SRC) -type f)
 	cd $(FRONT)  && npm run build
