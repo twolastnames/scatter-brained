@@ -33,7 +33,7 @@ const listeners = new Set<
   (current: EstimationState, previous?: EstimationState) => void
 >();
 
-const socketLocation = `ws://localhost:3000`;
+const socketLocation = `ws://${import.meta.env.VITE_HOST || "localhost"}:${import.meta.env.VITE_WS_PORT || 3333}`;
 
 const socket = new WebSocket(socketLocation);
 
