@@ -5,12 +5,17 @@ const http = require('http').createServer(app);
 const fs = require('fs');
 const {compare, applyPatch} = require('fast-json-patch')
 
+const wsBind = {
+  host: process.env.VITE_LAN_HOST || '0.0.0.0',
+  port: process.env.VITE_WS_LAN_PORT || process.env.VITE_WS_PORT || 3333,
+}
 
 const wss = new WebSocketServer({
   clientTracking: true,
-  host: process.env.VITE_LAN_HOST || '0.0.0.0',
-  port: process.env.VITE_WS_LAN_PORT || process.env.VITE_WS_PORT || 3333,
+  ...wsBind,
 });
+
+console.log(`websocket binding to ${wsBind.host}:${wsBind.port}`)
 
 let state = {}
 
@@ -49,4 +54,5 @@ app.get(/.*/, (req, res) => {
 http.listen(process.env.VITE_PORT || 8888, function() {
   var host = http.address().address
   var port = http.address().port
+  console.log(`serving front end on ${host}:${port}`)
 });

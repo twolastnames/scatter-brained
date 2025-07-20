@@ -39,3 +39,21 @@ build: $(BACK_MODULES) dist
 
 clean:
 	rm -rf dist $(FRONT_MODULES) $(BACK_MODULES)
+
+HOST ?= localhost
+LAN_HOST ?= 0.0.0.0
+LAN_PORT ?= 8888
+WS_LAN_PORT ?= 3333
+WS_PORT ?= 3333
+CARDS ?= "[1,2,3,5]"
+
+product:
+	sudo docker run -d \
+		-p ${LAN_PORT}:80 \
+		-p ${WS_LAN_PORT}:3000 \
+		-e VITE_HOST=${HOST} \
+		-e VITE_CARDS=${CARDS} \
+		-e VITE_WS_LAN_PORT=3000 \
+		-e VITE_PORT=80 \
+		-e VITE_WS_PORT=${WS_PORT} \
+		twolastnames/scatter-brained
