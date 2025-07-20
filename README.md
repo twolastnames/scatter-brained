@@ -20,7 +20,7 @@ Though setting described environment variables may be useful for correct setup, 
 | -------------------- | --------------- | -------------------- | ----------- |
 | VITE_WS_PORT         | WS_PORT         | 3333                 | The port the browser knows to look for the websocket |
 | VITE_PORT            | LAN_PORT        | 8888                 | entry port on host |
-| VITE_HOST            | localhost       | host the browser is looking for |
+| VITE_HOST            | HOST            | localhost            | host the browser is looking for |
 | VITE_WS_LAN_PORT     | WS_PORT         | VITE_WS_PORT or 3333 | host port for websocket |
 | VITE_LAN_HOST        | LAN_HOST        | 0.0.0.0              | host the application binds |
 | VITE_CARDS           | CARDS           | [1,2,3,5]            | selections available for application users |
